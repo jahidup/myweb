@@ -1,0 +1,344 @@
+/* =============================================
+   NexGenAiTech — Animations CSS
+   Keyframes + GSAP Hooks + Micro-interactions
+   ============================================= */
+
+/* =============================================
+   KEYFRAME ANIMATIONS
+   ============================================= */
+
+/* Spin */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Pulse dot */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* Pulse ring */
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+/* Pulse scale */
+@keyframes pulse-scale {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.06); }
+}
+
+/* Blink cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Float card */
+@keyframes float-card {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-18px); }
+}
+
+/* Float orb */
+@keyframes float-orb {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-30px) scale(1.05); }
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* Load bar */
+@keyframes load-bar {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* Typing bounce */
+@keyframes typing-bounce {
+  0%, 80%, 100% { transform: translateY(0); }
+  40%            { transform: translateY(-8px); }
+}
+
+/* Gradient shift */
+@keyframes grad-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Neon flicker */
+@keyframes neon-flicker {
+  0%, 100% { opacity: 1; }
+  92%       { opacity: 1; }
+  93%       { opacity: 0.8; }
+  94%       { opacity: 1; }
+  95%       { opacity: 0.7; }
+  96%       { opacity: 1; }
+}
+
+/* Shimmer */
+@keyframes shimmer {
+  0%   { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+/* Scale in */
+@keyframes scale-in {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* Slide up */
+@keyframes slide-up {
+  from { transform: translateY(60px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* Slide right */
+@keyframes slide-right {
+  from { transform: translateX(-60px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+/* =============================================
+   GSAP ANIMATION TRIGGER CLASSES
+   (Toggled by JavaScript GSAP ScrollTrigger)
+   ============================================= */
+.gsap-from-below {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.gsap-from-left {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+
+.gsap-from-right {
+  opacity: 0;
+  transform: translateX(60px);
+}
+
+.gsap-scale-in {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.gsap-fade {
+  opacity: 0;
+}
+
+/* =============================================
+   HERO ANIMATIONS (CSS only, no jitter)
+   ============================================= */
+.hero-content {
+  animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.hero-title { animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both; }
+.hero-subtitle { animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both; }
+.hero-actions { animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both; }
+.hero-trust { animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both; }
+
+/* =============================================
+   GRADIENT ANIMATED TEXT
+   ============================================= */
+.gradient-text-anim {
+  background: linear-gradient(270deg, #6366f1, #a855f7, #06b6d4, #6366f1);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: grad-shift 5s ease infinite;
+}
+
+/* =============================================
+   NEON GLOW TEXT
+   ============================================= */
+.neon-text {
+  color: var(--cyan);
+  text-shadow:
+    0 0 10px rgba(6, 182, 212, 0.8),
+    0 0 20px rgba(6, 182, 212, 0.5),
+    0 0 40px rgba(6, 182, 212, 0.3);
+  animation: neon-flicker 4s ease-in-out infinite;
+}
+
+/* =============================================
+   SHIMMER SKELETON
+   ============================================= */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--bg-card) 25%,
+    rgba(255,255,255,0.05) 50%,
+    var(--bg-card) 75%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* =============================================
+   SCROLL PROGRESS BAR
+   ============================================= */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--cyan));
+  z-index: 9999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px var(--primary-glow);
+}
+
+/* =============================================
+   HOVER MICRO-INTERACTIONS
+   ============================================= */
+
+/* Magnetic button effect via JS - class applied */
+.magnetic-btn {
+  transition: transform var(--transition-spring);
+  transform-style: preserve-3d;
+}
+
+/* Ripple effect */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  transform: scale(0);
+  animation: ripple-anim 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple-anim {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* =============================================
+   COUNT-UP ANIMATION
+   ============================================= */
+.count-up {
+  transition: all 0.1s;
+}
+
+/* =============================================
+   PARTICLE CANVAS FADE-IN
+   ============================================= */
+#hero-particles {
+  animation: fade-in-canvas 1.5s ease-out 0.5s both;
+}
+
+@keyframes fade-in-canvas {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* =============================================
+   SECTION DIVIDER GLOWS
+   ============================================= */
+.glow-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary), var(--cyan), transparent);
+  margin: 0;
+  opacity: 0.4;
+}
+
+.glow-divider-2 {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--purple), transparent);
+  margin: 0;
+  opacity: 0.3;
+}
+
+/* =============================================
+   ACTIVE NAV INDICATOR
+   ============================================= */
+.nav-link-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--primary);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.nav-link.active .nav-link-indicator { opacity: 1; }
+
+/* =============================================
+   CARD SPOTLIGHT EFFECT
+   (Mouse-tracking highlight on hover)
+   ============================================= */
+.card-spotlight {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(99, 102, 241, 0.08),
+    transparent 100%
+  );
+}
+
+.service-card:hover .card-spotlight { opacity: 1; }
+
+/* =============================================
+   STAGGER ANIMATIONS (JS class-based)
+   ============================================= */
+.stagger-1 { animation-delay: 0.0s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.2s; }
+.stagger-4 { animation-delay: 0.3s; }
+.stagger-5 { animation-delay: 0.4s; }
+.stagger-6 { animation-delay: 0.5s; }
+
+/* =============================================
+   TOOLTIP PULSE
+   ============================================= */
+.dot-pulse {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: pulse-ring 1.5s ease-in-out infinite;
+  margin-right: 6px;
+}
+
+/* =============================================
+   PAGE TRANSITION OVERLAY
+   ============================================= */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  background: var(--grad-hero);
+  z-index: 9998;
+  transform: translateY(100%);
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.page-transition.in  { transform: translateY(0); }
+.page-transition.out { transform: translateY(-100%); }
